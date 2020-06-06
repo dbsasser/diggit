@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::API
+    before_action :authorized
+
     def encode_token(payload)
         JWT.encode(payload, ENV['diggit_jwt_key'])
       end
@@ -27,5 +29,9 @@ class ApplicationController < ActionController::API
     
       def logged_in?
         !!current_user
+      end
+
+      def authorized
+        render json: { message: 'You must be logged in to do that.' }, status: :unauthorized unless logged_in?
       end
 end
