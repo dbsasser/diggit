@@ -21,6 +21,27 @@ function userModal () {
         </form>
         `
 
+        const userForm = document.getElementById("user-form")
+
+        userForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            fetch('http://localhost:3000/api/v1/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json'
+                },
+                body: JSON.stringify({
+                    user: {
+                        username: document.getElementById('username').value
+                        password: document.getElementById('password').value
+                    }
+                })
+            })
+            .then(r => r.json())
+            .then(console.log)
+        })
+
         modal.addEventListener('click', function(event){
             if (event.target === modal) {
                 modal.style.display ="none";
