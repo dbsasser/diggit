@@ -12,5 +12,11 @@ function userModal () {
         event.preventDefault();
         modal.style.display = "block";
         modalContent.innerHTML = "Form Placeholder"
+
+        modal.addEventListener('click', function(event){
+            if (event.target === modal) {
+                modal.style.display ="none";
+            }
+        })
     })
 }
