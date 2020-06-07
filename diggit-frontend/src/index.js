@@ -9,7 +9,7 @@ function userModal () {
     const modalContent = document.getElementById("modal-content");
     const userBox = document.getElementById("user-box");
 
-    signup.addEventListener('click', function(event) {
+    login.addEventListener('click', function(event) {
         event.preventDefault();
         modal.style.display = "block";
         modalContent.innerHTML = `
