@@ -7,7 +7,7 @@ function userModal () {
     const login = document.getElementById("login");
     const modal = document.getElementById("modal");
     const modalContent = document.getElementById("modal-content");
-    
+    const userBox = document.getElementById("user-box");
 
     signup.addEventListener('click', function(event) {
         event.preventDefault();
@@ -34,19 +34,26 @@ function userModal () {
                 },
                 body: JSON.stringify({
                     user: {
-                        username: document.getElementById('username').value
+                        username: document.getElementById('username').value,
                         password: document.getElementById('password').value
                     }
                 })
             })
             .then(r => r.json())
-            .then(console.log)
+            .then(user => {
+                userBox.innerHTML = `${user.user.username}`;
+                hideModal();
+            })
         })
 
         modal.addEventListener('click', function(event){
             if (event.target === modal) {
-                modal.style.display ="none";
+                hideModal();
             }
         })
     })
+
+    const hideModal = function() {
+        modal.style.display = "none";
+    }
 }
