@@ -44,7 +44,7 @@ function userModal () {
                 if (result.message) {
                     modalContent.prepend(result.message)
                 } else {
-                    userBox.innerHTML = `${result.user.username} | <a href="/logout" id="logout">Log Out</a>`;
+                    userBox.innerHTML = `${result.user.username}`;
                     hideModal();
                 }
             })
