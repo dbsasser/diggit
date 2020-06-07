@@ -40,9 +40,16 @@ function userModal () {
                 })
             })
             .then(r => r.json())
-            .then(user => {
-                userBox.innerHTML = `${user.user.username}`;
-                hideModal();
+            .then(result => {
+                if (result.message) {
+                    modalContent.prepend(result.message)
+                } else {
+                    userBox.innerHTML = `${result.user.username} | <a href="/logout" id="logout">Log Out</a>`;
+                    hideModal();
+                }
+            })
+            .catch(error => {
+                console.log(error)
             })
         })
 
