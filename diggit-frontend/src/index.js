@@ -3,12 +3,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
     loadSubmissions();
 });
 
+const signup = document.getElementById("signup");
+const login = document.getElementById("login");
+const modal = document.getElementById("modal");
+const modalContent = document.getElementById("modal-content");
+const userBox = document.getElementById("user-box");
+const createSubmission = document.getElementById("create-submission")
+
 function userModal() {
-    const signup = document.getElementById("signup");
-    const login = document.getElementById("login");
-    const modal = document.getElementById("modal");
-    const modalContent = document.getElementById("modal-content");
-    const userBox = document.getElementById("user-box");
 
     login.addEventListener('click', function(event) {
         event.preventDefault();
@@ -143,8 +145,6 @@ function renderSubmission(sub) {
     const submissionList = document.getElementById("submission-list");
     submissionList.innerHTML += sub
 }
-
-const createSubmission = document.getElementById("create-submission")
 
 createSubmission.addEventListener('click', function(event){
     event.preventDefault();
