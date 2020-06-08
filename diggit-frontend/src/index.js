@@ -116,7 +116,9 @@ function loadSubmissions(cat="all") {
     if (cat === "all") {
         fetch('http://localhost:3000/api/v1/submissions')
         .then(r => r.json())
-        .then(data => console.log(data))
+        .then(data => {
+            addSubmissionsToDom(data)
+        })
         .catch(error => {
             console.log(error)
         })
@@ -124,11 +126,11 @@ function loadSubmissions(cat="all") {
 }
 
 const htmlifySubmissions = function(sub){
-    return (' 
+    return(` 
         <div class="submissionRow">
-            `${element.link}`
+            ${sub.link}
         </div>
-    ')
+    `)
 }
 
 function addSubmissionsToDom(subs){
