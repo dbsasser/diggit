@@ -122,3 +122,11 @@ function loadSubmissions(cat="all") {
         })
     }
 }
+
+const htmlifySubmissions = function(sub){
+    return (' 
+        <div class="submissionRow">
+            `${element.link}`
+        </div>
+    ')
+}
