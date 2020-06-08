@@ -122,5 +122,3 @@ function loadSubmissions(cat="all") {
         })
     }
 }
-
-function create
