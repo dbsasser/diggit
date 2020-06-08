@@ -1,4 +1,5 @@
 class Api::V1::SubmissionsController < ApplicationController
+    skip_before_action :authorized, only: [:index, :show]
 
     def create 
         @submission = Submission.new(submission_params)
