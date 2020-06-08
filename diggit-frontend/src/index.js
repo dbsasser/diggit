@@ -140,6 +140,23 @@ function addSubmissionsToDom(subs){
 }
 
 function renderSubmission(sub) {
-    const submissionList = document.getElementById("submission-list") 
+    const submissionList = document.getElementById("submission-list");
     submissionList.innerHTML += sub
 }
+
+const createSubmission = document.getElementById("create-submission")
+
+createSubmission.addEventListener('click', function(event){
+    event.preventDefault();
+    modal.style.display = "block";
+    modalContent.innerHTML = `
+        <form id="submission-form">
+        <label for="link">Link:</label>
+        <input type="text" name="link" id="link">
+        <input type="submit" value="Submit">
+        </form>
+        `
+
+    let userForm = document.getElementById("submission-form") 
+    
+})
