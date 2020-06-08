@@ -130,3 +130,14 @@ const htmlifySubmissions = function(sub){
         </div>
     ')
 }
+
+function addSubmissionsToDom(subs){
+    subs.forEach(function(sub){
+        renderSubmission(htmlifySubmissions(sub))
+    })
+}
+
+function renderSubmission(sub) {
+    const submissionList = document.getElementById("submission-list") 
+    submissionList.innerHTML += sub
+}
