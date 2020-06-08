@@ -8,7 +8,10 @@ const login = document.getElementById("login");
 const modal = document.getElementById("modal");
 const modalContent = document.getElementById("modal-content");
 const userBox = document.getElementById("user-box");
-const createSubmission = document.getElementById("create-submission")
+const createSubmission = document.getElementById("create-submission");
+const submissionModal = document.getElementById("submission-modal");
+const submissionModalHeader = document.getElementById("submission-modal-header");
+const submissionModalContent = document.getElementById("submission-modal-content");
 
 function userModal() {
 
