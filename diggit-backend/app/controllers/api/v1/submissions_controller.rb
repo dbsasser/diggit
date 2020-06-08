@@ -3,6 +3,8 @@ class Api::V1::SubmissionsController < ApplicationController
 
     def create 
         @submission = Submission.new(submission_params)
+        @submission.user_id = current_user.id
+        @submission.category_id = 1
         if @submission.save
             render json: { submission: @submission_params }, status: :created
         else 
