@@ -1,5 +1,6 @@
 window.addEventListener('DOMContentLoaded', (event) => {
-    userModal()
+    userModal();
+    loadSubmissions();
 });
 
 function userModal() {
@@ -110,3 +111,16 @@ function userModal() {
         modal.style.display = "none";
     }
 }
+
+function loadSubmissions(cat="all") {
+    if (cat === "all") {
+        fetch('http://localhost:3000/api/v1/submissions')
+        .then(r => r.json())
+        .then(data => console.log(data))
+        .catch(error => {
+            console.log(error)
+        })
+    }
+}
+
+function create
