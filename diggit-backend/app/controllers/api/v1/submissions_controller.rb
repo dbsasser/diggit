@@ -1,4 +1,4 @@
-class SubmissionsController < ApplicationController
+class Api::V1::SubmissionsController < ApplicationController
 
     def create 
         @submission = Submission.new(submission_params)
