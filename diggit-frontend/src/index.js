@@ -47,6 +47,7 @@ function userModal() {
                 if (result.message) {
                     modalContent.prepend(result.message)
                 } else {
+                    localStorage.setItem('token', result.jwt)
                     userBox.innerHTML = `${result.user.username}`;
                     hideModal();
                 }
@@ -92,9 +93,12 @@ function userModal() {
                 if (result.message) {
                     modalContent.prepend(result.message)
                 } else {
+                    localStorage.setItem('token', result.jwt)
                     userBox.innerHTML = `${result.user.username}`;
                     hideModal();
                 }
+
+                
             })
             .catch(error => {
                 console.log(error)
@@ -157,6 +161,36 @@ createSubmission.addEventListener('click', function(event){
         </form>
         `
 
-    let userForm = document.getElementById("submission-form") 
+    let submissionForm = document.getElementById("submission-form")
+
+    submissionForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        debugger
+        fetch('http://localhost:3000/api/v1/submissions', {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${localStorage.token}`,
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+            },
+            body: JSON.stringify({
+                submission: {
+                    link: document.getElementById('link').value
+                }
+            })
+        })
+        .then(r => r.json())
+        .then(result => {
+            if (result.message) {
+                modalContent.prepend(result.message)
+            } else {
+                loadSubmissions();
+            }
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    })
+
     
 })
