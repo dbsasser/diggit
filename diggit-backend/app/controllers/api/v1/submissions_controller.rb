@@ -17,6 +17,11 @@ class Api::V1::SubmissionsController < ApplicationController
         render json: submissions
     end
 
+    def show
+        submission = Submission.find_by(id: params[:id])
+        render json: submission
+    end
+
     private
 
     def submission_params 
