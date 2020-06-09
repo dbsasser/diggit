@@ -30,6 +30,7 @@ function userFormHTML(type) {
 
 const hideModal = function() {
     modal.style.display = "none";
+    submissionModal.style.display = "none";
 }
 
 
@@ -91,11 +92,11 @@ function userModal() {
 //     `)
 // }
 
-function addSubmissionsToDom(subs){
-    subs.forEach(function(sub){
-        renderSubmission(htmlifySubmissions(sub))
-    })
-}
+// function addSubmissionsToDom(subs){
+//     subs.forEach(function(sub){
+//         renderSubmission(htmlifySubmissions(sub))
+//     })
+// }
 
 // function renderSubmission(sub) {
 //     submissionList.innerHTML += sub
@@ -154,7 +155,7 @@ function addSubmissionEvents() {
     submissionList.addEventListener('click', function(event){
         if (event.target.className === "submission-link") {
             event.preventDefault();
-            console.log('success')
+            Submission.fullDisplay();
         }
     })
 }
