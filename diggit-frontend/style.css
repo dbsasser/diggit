@@ -8,6 +8,7 @@
 #nav-content {
     margin: 0 auto;
     width: 85%;
+    height: 50px;
     border-bottom: #afafaf .5px solid;
 }
 
@@ -16,8 +17,9 @@
 }
 
 #user-box {
+    display: flex;
+    align-items: center;
     text-align: right;
-    vertical-align: middle;
 }
 
 #main-content {
