@@ -1,16 +1,18 @@
 class Submission {
     static all = []
 
-    constructor ({id, link}) {
+    constructor ({id, link, title}) {
+        
         this.id = id
         this.link = link
+        this.title = title
         Submission.all.push(this)
     }
 
     htmlifySubmission() {
         return(` 
             <div class="submissionRow">
-                <a href="${this.link}" class="submission-link">${this.link}</a>
+                <a href="${this.link}" class="submission-link">${this.title}</a>
             </div>
         `)
     }
