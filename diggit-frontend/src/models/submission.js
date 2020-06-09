@@ -34,8 +34,17 @@ class Submission {
         })
     }
 
-    static fullDisplay() {
+    static fullDisplay(submissionId) {
+        API.getSubmission(submissionId)
+        .then (submission => {
+            submissionModalHeader.innerHTML += `${submission.title}`
+            submissionModalContent.innerHTML = `
+                <iframe is="x-frame-bypass" src="${submission.link}" width="100%" height="100%"></iframe>
+            `
+        })
         submissionModal.style.display = "block";
+
+
 
         submissionModal.addEventListener('click', function(event){
             if (event.target === submissionModal) {
