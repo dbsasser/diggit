@@ -11,7 +11,7 @@ class Submission {
 
     htmlifySubmission() {
         return(` 
-            <div class="submissionRow">
+            <div class="submissionRow" id="${this.id}>
                 <a href="${this.link}" class="submission-link">${this.title}</a>
             </div>
         `)
