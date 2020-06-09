@@ -7,8 +7,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="user-box">
-        <a href="/signup" id="signup">Sign Up</a> | <a href="/login" id="login">Log In</a>
+    <div id="nav">
+        <div id="nav-content">
+            <div id="logo">
+                <img src="img/diggit.png">
+            </div>
+            <div id="user-box">
+                <a href="/signup" id="signup">Sign Up</a> | <a href="/login" id="login">Log In</a>
+            </div>
+        </div>
     </div>
     <div id="modal">
         <div id="modal-content">
@@ -25,11 +32,13 @@
             </div>
         </div>
     </div>
-    <div id="submission-list">
+    <div id="main-content">
+        <div id="submission-list">
 
-    </div>
-    <div id="sidebar">
-        <a href="/submissions/create" id="create-submission">Submit A Link</a>
+        </div>
+        <div id="sidebar">
+            <a href="/submissions/create" id="create-submission">Submit A Link</a>
+        </div>
     </div>
     <script type="module" src="https://unpkg.com/x-frame-bypass"></script>
     <script type="application/javascript" src="src/services/api.js" charset="UTF-8"></script>
