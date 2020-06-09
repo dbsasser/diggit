@@ -1,5 +1,5 @@
 class SubmissionSerializer < ActiveModel::Serializer
-  attributes :id, :link
+  attributes :id, :link, :title
   has_one :category
   has_one :user
 end
