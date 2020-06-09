@@ -1,6 +1,7 @@
 window.addEventListener('DOMContentLoaded', (event) => {
     userModal();
     loadSubmissions();
+    addSubmissionEvents()
 });
 
 const signup = document.getElementById("signup");
@@ -12,6 +13,7 @@ const createSubmission = document.getElementById("create-submission");
 const submissionModal = document.getElementById("submission-modal");
 const submissionModalHeader = document.getElementById("submission-modal-header");
 const submissionModalContent = document.getElementById("submission-modal-content");
+const submissionList = document.getElementById("submission-list");
 
 function userModal() {
 
@@ -137,7 +139,7 @@ function loadSubmissions(cat="all") {
 const htmlifySubmissions = function(sub){
     return(` 
         <div class="submissionRow">
-            ${sub.link}
+            <a href="${sub.link}" class="submission-link">${sub.link}</a>
         </div>
     `)
 }
@@ -149,7 +151,6 @@ function addSubmissionsToDom(subs){
 }
 
 function renderSubmission(sub) {
-    const submissionList = document.getElementById("submission-list");
     submissionList.innerHTML += sub
 }
 
@@ -168,7 +169,6 @@ createSubmission.addEventListener('click', function(event){
 
     submissionForm.addEventListener('submit', function(event) {
         event.preventDefault();
-        debugger
         fetch('http://localhost:3000/api/v1/submissions', {
             method: 'POST',
             headers: {
@@ -197,3 +197,13 @@ createSubmission.addEventListener('click', function(event){
 
     
 })
+
+function addSubmissionEvents() {
+    submissionList.addEventListener('click', function(event){
+        if (event.target.className === "submission-link") {
+            event.preventDefault();
+            console.log('success')
+        }
+    })
+}
+
