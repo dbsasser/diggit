@@ -103,9 +103,9 @@ class API {
             })
     }
 
-    static getSubmission(id) {
+    static getSubmission(submissionId) {
         return(
-            fetch('http://localhost:3000/api/v1/submissions + `${id}`')
+            fetch('http://localhost:3000/api/v1/submissions' + `/${submissionId}`)
             .then(r => r.json())
         )
     }
