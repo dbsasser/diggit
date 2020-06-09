@@ -11,12 +11,14 @@ class Submission {
 
     htmlifySubmission() {
         return(` 
-            <div class="submissionRow" id="${this.id}" class="pure-g">
-                <div class="pure-u-1-5">
-                    ${this.upvoteCount} <br>
-                    Upvotes 
+            <div class="submissionRow pure-g" id="${this.id}">
+                <div class="pure-u-1-5" id="upvote-div">
+                    <img src="img/upvote-arrow.png">
                 </div>
-                <div class="pure-u-4-5">
+                <div class="pure-u-1-5">
+                    ${this.upvoteCount}
+                </div>
+                <div class="pure-u-3-5">
                     <a href="${this.link}" class="submission-link">${this.title}</a>
                 </div>
             </div>
