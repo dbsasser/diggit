@@ -72,37 +72,6 @@ function userModal() {
 
 }
 
-// function loadSubmissions(cat="all") {
-//     if (cat === "all") {
-//         fetch('http://localhost:3000/api/v1/submissions')
-//         .then(r => r.json())
-//         .then(data => {
-//             addSubmissionsToDom(data)
-//         })
-//         .catch(error => {
-//             console.log(error)
-//         })
-//     }
-// }
-
-// const htmlifySubmissions = function(sub){
-//     return(` 
-//         <div class="submissionRow">
-//             <a href="${sub.link}" class="submission-link">${sub.link}</a>
-//         </div>
-//     `)
-// }
-
-// function addSubmissionsToDom(subs){
-//     subs.forEach(function(sub){
-//         renderSubmission(htmlifySubmissions(sub))
-//     })
-// }
-
-// function renderSubmission(sub) {
-//     submissionList.innerHTML += sub
-// }
-
 createSubmission.addEventListener('click', function(event){
     event.preventDefault();
     modal.style.display = "block";
@@ -123,30 +92,6 @@ createSubmission.addEventListener('click', function(event){
     submissionForm.addEventListener('submit', function(event) {
         event.preventDefault();
         API.postSubmission();
-        // fetch('http://localhost:3000/api/v1/submissions', {
-        //     method: 'POST',
-        //     headers: {
-        //         Authorization: `Bearer ${localStorage.token}`,
-        //         'Content-Type': 'application/json',
-        //         Accept: 'application/json'
-        //     },
-        //     body: JSON.stringify({
-        //         submission: {
-        //             link: document.getElementById('link').value
-        //         }
-        //     })
-        // })
-        // .then(r => r.json())
-        // .then(result => {
-        //     if (result.message) {
-        //         modalContent.prepend(result.message)
-        //     } else {
-        //         loadSubmissions();
-        //     }
-        // })
-        // .catch(error => {
-        //     console.log(error)
-        // })
     })
 
     
