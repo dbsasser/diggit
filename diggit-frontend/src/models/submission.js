@@ -37,7 +37,7 @@ class Submission {
     static fullDisplay(submissionId) {
         API.getSubmission(submissionId)
         .then (submission => {
-            submissionModalHeader.innerHTML += `${submission.title}`
+            submissionModalTitle.innerHTML += `${submission.title}`
             submissionModalContent.innerHTML = `
                 <iframe is="x-frame-bypass" src="${submission.link}" width="100%" height="100%"></iframe>
             `

@@ -14,6 +14,7 @@ const submissionModal = document.getElementById("submission-modal");
 const submissionModalHeader = document.getElementById("submission-modal-header");
 const submissionModalContent = document.getElementById("submission-modal-content");
 const submissionList = document.getElementById("submission-list");
+const submissionModalTitle = document.getElementById("submission-modal-title");
 
 function userFormHTML(type) {
     return(`
