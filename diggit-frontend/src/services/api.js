@@ -9,6 +9,7 @@ class API {
             },
             body: JSON.stringify({
                 submission: {
+                    title: document.getElementById('title').value,
                     link: document.getElementById('link').value
                 }
             })
