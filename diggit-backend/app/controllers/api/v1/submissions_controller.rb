@@ -6,7 +6,7 @@ class Api::V1::SubmissionsController < ApplicationController
         @submission.user_id = current_user.id
         @submission.category_id = 1
         if @submission.save
-            render json: { submission: @submission_params }, status: :created
+            render json: { submission: @submission }, status: :created
         else 
             render json: { error: 'failed to create post' }, status: :not_acceptable
         end
@@ -20,7 +20,7 @@ class Api::V1::SubmissionsController < ApplicationController
     private
 
     def submission_params 
-        params.require(:submission).permit(:link, :category_id, :user_id)
+        params.require(:submission).permit(:title, :link, :category_id, :user_id)
     end
 
 end
