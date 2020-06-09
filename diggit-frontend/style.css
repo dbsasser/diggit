@@ -28,7 +28,7 @@
     width: 85%;
 }
 #submission-list {
-    
+    width: 70%;
 }
 
 #sidebar {
@@ -91,4 +91,7 @@
     margin: 0px auto;
 }
 
+#submission-row {
+    width: 100%;
+}
 
