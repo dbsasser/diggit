@@ -156,7 +156,7 @@ function addSubmissionEvents() {
     submissionList.addEventListener('click', function(event){
         if (event.target.className === "submission-link") {
             event.preventDefault();
-            const submissionId = event.target.parentElement.id
+            const submissionId = event.target.parentElement.parentElement.id
             Submission.fullDisplay(submissionId);
 
         }
