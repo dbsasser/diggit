@@ -106,9 +106,13 @@ createSubmission.addEventListener('click', function(event){
     modal.style.display = "block";
     modalContent.innerHTML = `
         <form id="submission-form">
-        <label for="link">Link:</label>
-        <input type="text" name="link" id="link">
-        <input type="submit" value="Submit">
+            <label for="link">Title:</label><br>
+            <input type="text" name="title" id="title"><br><br>
+
+            <label for="link">Link:</label><br>
+            <input type="text" name="link" id="link"><br><br>
+
+            <input type="submit" value="Submit">
         </form>
         `
 
