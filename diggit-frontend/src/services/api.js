@@ -102,4 +102,11 @@ class API {
                 console.log(error)
             })
     }
+
+    static getSubmission(id) {
+        return(
+            fetch('http://localhost:3000/api/v1/submissions + `${id}`')
+            .then(r => r.json())
+        )
+    }
 }
