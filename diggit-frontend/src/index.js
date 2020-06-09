@@ -1,6 +1,6 @@
 window.addEventListener('DOMContentLoaded', (event) => {
     userModal();
-    loadSubmissions();
+    Submission.loadSubmissions();
     addSubmissionEvents()
 });
 
@@ -15,99 +15,50 @@ const submissionModalHeader = document.getElementById("submission-modal-header")
 const submissionModalContent = document.getElementById("submission-modal-content");
 const submissionList = document.getElementById("submission-list");
 
+function userFormHTML(type) {
+    return(`
+    <form id="user-form">
+    <label for="username">Username</label>
+    <input type="text" name="username" id="username">
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password">
+    <input type="submit" value="${type}">
+    </form>
+    `)
+}
+    
+
+const hideModal = function() {
+    modal.style.display = "none";
+}
+
+
+
 function userModal() {
 
     login.addEventListener('click', function(event) {
         event.preventDefault();
         modal.style.display = "block";
-        modalContent.innerHTML = `
-        <form id="user-form">
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username">
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password">
-        <input type="submit" value="Log In">
-        </form>
-        `
+        modalContent.innerHTML = userFormHTML("Log In")
 
         let userForm = document.getElementById("user-form")
 
         userForm.addEventListener('submit', function(event) {
             event.preventDefault();
-            fetch('http://localhost:3000/api/v1/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Accept: 'application/json'
-                },
-                body: JSON.stringify({
-                    user: {
-                        username: document.getElementById('username').value,
-                        password: document.getElementById('password').value
-                    }
-                })
-            })
-            .then(r => r.json())
-            .then(result => {
-                if (result.message) {
-                    modalContent.prepend(result.message)
-                } else {
-                    localStorage.setItem('token', result.jwt)
-                    userBox.innerHTML = `${result.user.username}`;
-                    hideModal();
-                }
-            })
-            .catch(error => {
-                console.log(error)
-            })
+            API.logIn()
         })
     })
    
     signup.addEventListener('click', function(event) {
         event.preventDefault();
         modal.style.display = "block";
-        modalContent.innerHTML = `
-        <form id="user-form">
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username">
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password">
-        <input type="submit" value="Sign Up">
-        </form>
-        `
+        modalContent.innerHTML = userFormHTML("Sign Up")
 
         let userForm = document.getElementById("user-form")
 
         userForm.addEventListener('submit', function(event) {
             event.preventDefault();
-            fetch('http://localhost:3000/api/v1/users', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Accept: 'application/json'
-                },
-                body: JSON.stringify({
-                    user: {
-                        username: document.getElementById('username').value,
-                        password: document.getElementById('password').value
-                    }
-                })
-            })
-            .then(r => r.json())
-            .then(result => {
-                if (result.message) {
-                    modalContent.prepend(result.message)
-                } else {
-                    localStorage.setItem('token', result.jwt)
-                    userBox.innerHTML = `${result.user.username}`;
-                    hideModal();
-                }
-
-                
-            })
-            .catch(error => {
-                console.log(error)
-            })
+            API.signUp()
         })
     })
 
@@ -117,32 +68,28 @@ function userModal() {
         }
     })
 
-
-    const hideModal = function() {
-        modal.style.display = "none";
-    }
 }
 
-function loadSubmissions(cat="all") {
-    if (cat === "all") {
-        fetch('http://localhost:3000/api/v1/submissions')
-        .then(r => r.json())
-        .then(data => {
-            addSubmissionsToDom(data)
-        })
-        .catch(error => {
-            console.log(error)
-        })
-    }
-}
+// function loadSubmissions(cat="all") {
+//     if (cat === "all") {
+//         fetch('http://localhost:3000/api/v1/submissions')
+//         .then(r => r.json())
+//         .then(data => {
+//             addSubmissionsToDom(data)
+//         })
+//         .catch(error => {
+//             console.log(error)
+//         })
+//     }
+// }
 
-const htmlifySubmissions = function(sub){
-    return(` 
-        <div class="submissionRow">
-            <a href="${sub.link}" class="submission-link">${sub.link}</a>
-        </div>
-    `)
-}
+// const htmlifySubmissions = function(sub){
+//     return(` 
+//         <div class="submissionRow">
+//             <a href="${sub.link}" class="submission-link">${sub.link}</a>
+//         </div>
+//     `)
+// }
 
 function addSubmissionsToDom(subs){
     subs.forEach(function(sub){
@@ -150,9 +97,9 @@ function addSubmissionsToDom(subs){
     })
 }
 
-function renderSubmission(sub) {
-    submissionList.innerHTML += sub
-}
+// function renderSubmission(sub) {
+//     submissionList.innerHTML += sub
+// }
 
 createSubmission.addEventListener('click', function(event){
     event.preventDefault();
@@ -169,30 +116,31 @@ createSubmission.addEventListener('click', function(event){
 
     submissionForm.addEventListener('submit', function(event) {
         event.preventDefault();
-        fetch('http://localhost:3000/api/v1/submissions', {
-            method: 'POST',
-            headers: {
-                Authorization: `Bearer ${localStorage.token}`,
-                'Content-Type': 'application/json',
-                Accept: 'application/json'
-            },
-            body: JSON.stringify({
-                submission: {
-                    link: document.getElementById('link').value
-                }
-            })
-        })
-        .then(r => r.json())
-        .then(result => {
-            if (result.message) {
-                modalContent.prepend(result.message)
-            } else {
-                loadSubmissions();
-            }
-        })
-        .catch(error => {
-            console.log(error)
-        })
+        API.postSubmission();
+        // fetch('http://localhost:3000/api/v1/submissions', {
+        //     method: 'POST',
+        //     headers: {
+        //         Authorization: `Bearer ${localStorage.token}`,
+        //         'Content-Type': 'application/json',
+        //         Accept: 'application/json'
+        //     },
+        //     body: JSON.stringify({
+        //         submission: {
+        //             link: document.getElementById('link').value
+        //         }
+        //     })
+        // })
+        // .then(r => r.json())
+        // .then(result => {
+        //     if (result.message) {
+        //         modalContent.prepend(result.message)
+        //     } else {
+        //         loadSubmissions();
+        //     }
+        // })
+        // .catch(error => {
+        //     console.log(error)
+        // })
     })
 
     
