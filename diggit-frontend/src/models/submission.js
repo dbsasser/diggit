@@ -12,8 +12,8 @@ class Submission {
     htmlifySubmission() {
         return(` 
             <div class="submissionRow pure-g" id="${this.id}">
-                <div class="pure-u-1-5" id="upvote-div">
-                    <img src="img/upvote-arrow.png">
+                <div class="pure-u-1-5 upvote-div" >
+                    <a href="#"><img src="img/upvote-arrow.png" class="upvote-link"></a>
                 </div>
                 <div class="pure-u-1-5">
                     ${this.upvoteCount}
@@ -59,6 +59,13 @@ class Submission {
                 hideModal();
             }
         })
+    }
+
+    static upvote(event, submissionId) {
+        API.postUpvote(submissionId)
+        .then(
+            event.target.src="img/upvote-arrow-active.png"
+        )
     }
 
 }
