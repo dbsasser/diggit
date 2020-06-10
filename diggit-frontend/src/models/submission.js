@@ -67,11 +67,13 @@ class Submission {
 
     static upvote(event, submissionId) {
         API.postUpvote(submissionId)
+        .then(function(response) {
+            if (!response.error) {
+                Submission.addOneToUpvoteCountDisplay(event)
+            }
+        })
         .then(
             event.target.src="img/upvote-arrow-active.png"
-        )
-        .then(
-            Submission.addOneToUpvoteCountDisplay(event)
         )
     }
 
