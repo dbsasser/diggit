@@ -109,4 +109,23 @@ class API {
             .then(r => r.json())
         )
     }
+
+    static postUpvote(submissionId) {
+        return(
+            fetch('http://localhost:3000/api/v1/upvotes', {
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${localStorage.token}`,
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json'
+                },
+                body: JSON.stringify({
+                    submission: {
+                        submission_id: parseInt(`${submissionId}`, 10)
+                    }
+                })
+            })
+            .then(r => r.json())
+        )
+    }
 }
