@@ -13,12 +13,9 @@ class Submission {
         return(` 
             <div class="submissionRow pure-g" id="${this.id}">
                 <div class="pure-u-1-5 upvote-div" >
-                    <a href="#"><img src="img/upvote-arrow.png" class="upvote-link"></a>
+                    <a href="#"><img src="img/upvote-arrow.png" class="upvote-link"></a><span class="vote-count">${this.upvoteCount}</span></a>
                 </div>
-                <div class="pure-u-1-5">
-                    ${this.upvoteCount}
-                </div>
-                <div class="pure-u-3-5">
+                <div class="pure-u-4-5">
                     <a href="${this.link}" class="submission-link">${this.title}</a>
                 </div>
             </div>
@@ -40,6 +37,13 @@ class Submission {
             submissions.forEach(submission => new Submission(submission))
             Submission.renderSubmissions()
         })
+    }
+
+    static addOneToUpvoteCountDisplay(event) {
+        const voteCount = event.target.parentElement.parentElement.querySelector(".vote-count")
+        let voteCountNumber = parseInt(voteCount.innerText, 10)
+        voteCountNumber ++
+        voteCount.innerText = voteCountNumber
     }
 
     static fullDisplay(submissionId) {
@@ -65,6 +69,9 @@ class Submission {
         API.postUpvote(submissionId)
         .then(
             event.target.src="img/upvote-arrow-active.png"
+        )
+        .then(
+            Submission.addOneToUpvoteCountDisplay(event)
         )
     }
 
