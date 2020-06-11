@@ -100,11 +100,11 @@ createSubmission.addEventListener('click', function(event){
 function addSubmissionEvents() {
     submissionList.addEventListener('click', function(event){
         if (event.target.className === "submission-link") {
-            const submissionId = event.target.parentElement.parentElement.id
+            const submissionId = event.target.parentElement.id
             event.preventDefault();
             Submission.fullDisplay(submissionId);
         } else if (event.target.className === "upvote-link") {
-            const submissionId = event.target.parentElement.parentElement.parentElement.id
+            const submissionId = event.target.parentElement.id
             event.preventDefault();
             Submission.upvote(event, submissionId);
         }

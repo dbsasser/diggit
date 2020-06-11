@@ -1,22 +1,36 @@
 class Submission {
     static all = []
 
-    constructor ({id, link, title, upvotes}) {
+    constructor ({id, link, title, upvotes, user:username, category:name}) {
+
         this.id = id
         this.link = link
         this.title = title
         this.upvoteCount = upvotes.length
+        this.user = username
+        this.category = name
+
         Submission.all.push(this)
     }
 
     htmlifySubmission() {
         return(` 
-            <div class="submissionRow pure-g" id="${this.id}">
-                <div class="pure-u-1-5 upvote-div" >
-                    <a href="#"><img src="img/upvote-arrow.png" class="upvote-link"></a><span class="vote-count">${this.upvoteCount}</span></a>
-                </div>
-                <div class="pure-u-4-5">
-                    <a href="${this.link}" class="submission-link">${this.title}</a>
+            <div class="card my-2 w-100" id="${this.id}">
+                <div class="card-block mt-3 mx-3">
+                    <div class="row">
+                        <div class="col-2">
+                            <div class="upvote-div text-center">
+                                <figure>
+                                <a href="#" id="${this.id}"><img src="img/upvote-arrow.png" class="upvote-link"></a>
+                                <figcaption><span class="vote-count">${this.upvoteCount}</span></figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="col-10" id="${this.id}">
+                                <a href="${this.link}" class="submission-link">${this.title}</a><br>
+                                <small>Posted by <strong>${this.user.username}</strong> in <strong>${this.category.name}</strong>
+                        </div>
+                    </div>
                 </div>
             </div>
         `)
