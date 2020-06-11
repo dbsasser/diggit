@@ -31,15 +31,14 @@ class API {
     static getSubmissions(cat="all"){
         if (cat === "all") {
             return(
-            fetch('http://localhost:3000/api/v1/submissions')
-            .then(r => r.json())
+                fetch('http://localhost:3000/api/v1/submissions')
+                .then(r => r.json())
             )
-            // .then(data => {
-            //     addSubmissionsToDom(data)
-            // })
-            // .catch(error => {
-            //     console.log(error)
-            // })
+        } else {
+            return(
+                fetch('http://localhost:3000/api/v1/categories/' + `${cat}` + '/submissions')
+                .then(r => r.json())
+            )
         }
     }
 
