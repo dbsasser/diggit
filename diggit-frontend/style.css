@@ -1,12 +1,4 @@
 
-#submission-list {
-    width: 70%;
-}
-
-#sidebar {
-   
-}
-
 #modal {
     display: none;
     position: fixed;
@@ -61,10 +53,6 @@
     font-size: 20px;
     color: #ffffff;
     margin: 0px auto;
-}
-
-#submission-row {
-    width: 100%;
 }
 
 iframe {
