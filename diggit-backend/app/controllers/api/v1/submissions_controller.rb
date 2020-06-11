@@ -13,7 +13,12 @@ class Api::V1::SubmissionsController < ApplicationController
     end
 
     def index
-        submissions = Submission.all 
+        if params[:category_id]
+            category = Category.find_by(id: params[:category_id])
+            submissions = category.submissions
+        else 
+            submissions = Submission.all 
+        end
         render json: submissions
     end
 
