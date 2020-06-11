@@ -6,7 +6,9 @@ Rails.application.routes.draw do
       resources :users, only: [:create]
       post '/login', to: 'auth#create'
       get '/profile', to: 'users#profile'
-      resources :categories
+      resources :categories do 
+        resources :submissions
+      end
       resources :submissions
       resources :upvotes
     end
