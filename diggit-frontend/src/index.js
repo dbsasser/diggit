@@ -1,7 +1,8 @@
 window.addEventListener('DOMContentLoaded', (event) => {
     userModal();
     Submission.loadSubmissions();
-    addSubmissionEvents()
+    addSubmissionEvents();
+    navLinkEvents();
 });
 
 const signup = document.getElementById("signup");
@@ -15,6 +16,14 @@ const submissionModalHeader = document.getElementById("submission-modal-header")
 const submissionModalContent = document.getElementById("submission-modal-content");
 const submissionList = document.getElementById("submission-list");
 const submissionModalTitle = document.getElementById("submission-modal-title");
+const navAll = document.getElementById("all");
+const navFunny = document.getElementById("1");
+const navAmazing = document.getElementById("2");
+const navTech = document.getElementById("3");
+const navNews = document.getElementById("4");
+const navVideos = document.getElementById("5");
+const navLinks = [navAll, navFunny, navAmazing, navTech, navNews, navVideos]
+
 
 function userFormHTML(type) {
     return(`
@@ -110,4 +119,15 @@ function addSubmissionEvents() {
         }
     })
 }
+
+const navLinkEvents = function(){
+    navLinks.forEach(link => {
+        link.addEventListener ('click', function(event){
+            event.preventDefault();
+            const catId = event.target.id 
+            Submission.loadSubmissions(catId)
+        })
+    })
+}
+
 
