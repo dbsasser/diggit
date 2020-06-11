@@ -45,9 +45,10 @@ class Submission {
         Submission.all.forEach(submission => submission.renderSubmission())
     }
 
-    static loadSubmissions() {
-        API.getSubmissions()
+    static loadSubmissions(cat) {
+        API.getSubmissions(cat)
         .then (submissions => {
+            Submission.all = []
             submissions.forEach(submission => new Submission(submission))
             Submission.renderSubmissions()
         })
