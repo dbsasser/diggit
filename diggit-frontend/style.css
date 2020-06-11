@@ -1,32 +1,4 @@
-#nav {
-    height: 50px;
-    width: 100%;
-    color: #000000;
-    display: block;
-}
 
-#nav-content {
-    margin: 0 auto;
-    width: 85%;
-    height: 50px;
-    border-bottom: #afafaf .5px solid;
-}
-
-#logo {
-    
-}
-
-#user-box {
-    display: flex;
-    align-items: center;
-    text-align: right;
-}
-
-#main-content {
-    margin: 10px auto;
-    display: block;
-    width: 85%;
-}
 #submission-list {
     width: 70%;
 }
