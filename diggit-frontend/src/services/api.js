@@ -10,7 +10,8 @@ class API {
             body: JSON.stringify({
                 submission: {
                     title: document.getElementById('title').value,
-                    link: document.getElementById('link').value
+                    link: document.getElementById('link').value,
+                    category_id: document.getElementById('category').value
                 }
             })
         })

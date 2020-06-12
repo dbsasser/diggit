@@ -106,6 +106,17 @@ createSubmission.addEventListener('click', function(event){
                 <label for="link">Link:</label><br>
                 <input type="text" name="link" id="link" class="form-control">
             </div>
+            
+            <div class="form-group"
+                <label for="category">Category:</label><br>
+                    <select class="form-control" id="category" name="category">
+                    <option value="1">Funny</option>
+                    <option value="2">Amazing</option>
+                    <option value="3">Tech</option>
+                    <option value="4">News</option>
+                    <option value="5">Videos</option>
+                </select>
+            </div>
 
             <input type="submit" class="btn btn-warning" value="Submit">
         </form>
