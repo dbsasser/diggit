@@ -95,14 +95,19 @@ createSubmission.addEventListener('click', function(event){
     event.preventDefault();
     modal.style.display = "block";
     modalContent.innerHTML = `
-        <form id="submission-form">
+        <form id="submission-form" class="card-body">
+            
+            <div class="form-group">
             <label for="link">Title:</label><br>
-            <input type="text" name="title" id="title"><br><br>
+            <input type="text" name="title" id="title" class="form-control">
+            </div>
 
-            <label for="link">Link:</label><br>
-            <input type="text" name="link" id="link"><br><br>
+            <div class="form-group">
+                <label for="link">Link:</label><br>
+                <input type="text" name="link" id="link" class="form-control">
+            </div>
 
-            <input type="submit" value="Submit">
+            <input type="submit" class="btn btn-warning" value="Submit">
         </form>
         `
 
