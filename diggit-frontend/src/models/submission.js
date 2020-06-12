@@ -83,7 +83,7 @@ class Submission {
     static upvote(event, submissionId) {
         API.postUpvote(submissionId)
         .then(function(response) {
-            if (!response.error) {
+            if (!response.error && !response.message) {
                 Submission.addOneToUpvoteCountDisplay(event)
             }
         })
