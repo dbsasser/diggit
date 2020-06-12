@@ -28,13 +28,22 @@ const closeFullDisplay = document.getElementById("close-full-display")
 
 function userFormHTML(type) {
     return(`
-    <form id="user-form">
-    <label for="username">Username</label>
-    <input type="text" name="username" id="username">
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password">
-    <input type="submit" value="${type}">
-    </form>
+    <div class="card-title">
+        ${type}
+    </div>
+    <div class="card-body text-center">
+        <form id="user-form">
+        <div class="form-group">
+            <label for="username">Username:</label><br>
+            <input type="text" name="username" id="username">
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label><br>
+            <input type="password" name="password" id="password">
+        </div>
+        <input type="submit" class="btn btn-warning" value="${type}">
+        </form>
+    </div>
     `)
 }
     
