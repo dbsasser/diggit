@@ -108,8 +108,8 @@ createSubmission.addEventListener('click', function(event){
 
 function addSubmissionEvents() {
     submissionList.addEventListener('click', function(event){
-        if (event.target.className === "submission-link") {
-            const submissionId = event.target.parentElement.id
+        if (event.target.className === "submission-link text-dark") {
+            const submissionId = event.target.parentElement.parentElement.id
             event.preventDefault();
             Submission.fullDisplay(submissionId);
         } else if (event.target.className === "upvote-link") {
