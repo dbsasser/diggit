@@ -23,6 +23,7 @@ const navTech = document.getElementById("3");
 const navNews = document.getElementById("4");
 const navVideos = document.getElementById("5");
 const navLinks = [navAll, navFunny, navAmazing, navTech, navNews, navVideos]
+const closeFullDisplay = document.getElementById("close-full-display")
 
 
 function userFormHTML(type) {
@@ -129,5 +130,9 @@ const navLinkEvents = function(){
         })
     })
 }
+
+closeFullDisplay.addEventListener('click', function(event) {
+    hideModal();
+})
 
 
