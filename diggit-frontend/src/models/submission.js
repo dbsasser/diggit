@@ -27,7 +27,7 @@ class Submission {
                             </div>
                         </div>
                         <div class="col-10" id="${this.id}">
-                                <a href="${this.link}" class="submission-link">${this.title}</a><br>
+                                <h5><a href="${this.link}" class="submission-link text-dark">${this.title}</a></h5>
                                 <small>Posted by <strong>${this.user.username}</strong> in <strong>${this.category.name}</strong>
                         </div>
                     </div>
