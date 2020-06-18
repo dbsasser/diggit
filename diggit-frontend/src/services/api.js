@@ -20,12 +20,13 @@ class API {
             if (result.message) {
                 modalContent.prepend(result.message)
             } else {
-                Submission.loadSubmissions();
+                let newSubmission = new Submission(result);
+                newSubmission.renderSubmission();
                 hideModal();
             }
 
         })
-        .then(Submission.loadSubmissions())
+        // .then(Submission.loadSubmissions())
         .catch(error => {
             console.log(error)
         })
