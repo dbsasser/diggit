@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :upvotes
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   namespace :api do
     namespace :v1 do
@@ -7,10 +6,10 @@ Rails.application.routes.draw do
       post '/login', to: 'auth#create'
       get '/profile', to: 'users#profile'
       resources :categories do 
-        resources :submissions
+        resources :submissions, only: [:index, :show]
       end
-      resources :submissions
-      resources :upvotes
+      resources :submissions, only: [:index, :show]
+      resources :upvotes, only: [:create]
     end
   end
 end
