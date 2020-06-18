@@ -5,7 +5,7 @@ class Api::V1::SubmissionsController < ApplicationController
         @submission = Submission.new(submission_params)
         @submission.user_id = current_user.id
         if @submission.save
-            render json: { submission: @submission }, status: :created
+            render json: @submission, status: :created
         else 
             render json: { error: 'failed to create post' }, status: :not_acceptable
         end
